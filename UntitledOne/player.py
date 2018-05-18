@@ -63,7 +63,8 @@ class Player():
 			tile.item = None
 
 	def use(self):
-		use_item = input('Item to use? ')
-		for use_item in self.inventory.name: #prob will not work
-			use_item.use() #add use method to item subclass
+		check_item = input('Item to use? ')
+		for i in range(len(self.inventory)):
+			if check_item == self.inventory[i].name:
+				self.inventory[i].use_item #add use item method to item
 			

@@ -26,6 +26,7 @@ class MapTile:
 	def available_actions(self):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
+		moves.append(actions.Use())
 
 		return moves
 

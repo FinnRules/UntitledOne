@@ -5,7 +5,7 @@ class MapTile:
 		self.x = x
 		self.y = y
 
-	def intr_text(self):
+	def intro_text(self):
 		raise NotImplementedError()
 
 	def modify_player(self, the_player):

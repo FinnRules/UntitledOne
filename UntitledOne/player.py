@@ -57,3 +57,6 @@ class Player():
 		r = random.randint(0, len(available_moves) - 1)
 		self.do_action(available_moves[r])
 
+	def grab(self, tile, item):
+		if tile.item == item.name:
+			the_player.inventory.append(tile.item)

@@ -44,4 +44,4 @@ class Grab(Action):
 
 class Use(Action):
 	def __init__(self):
-		super().__init(method=Player.use, name='Use', hotkey='u')
+		super().__init__(method=Player.use, name='Use', hotkey='u')

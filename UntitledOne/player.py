@@ -61,3 +61,9 @@ class Player():
 		if tile.item != None:
 			self.inventory.append(tile.item)
 			tile.item = None
+
+	def use(self):
+		use_item = input('Item to use? ')
+		for use_item in self.inventory.name: #prob will not work
+			use_item.use() #add use method to item subclass
+			

@@ -1,0 +1,11 @@
+	WinRoom	
+	Hallway	
+	Hallway	
+	Hallway	
+	Hallway	
+	Hallway	
+Closet	StartingRoom	GuardRoom
+	Hallway	
+	Hallway	
+	Hallway	Hallway
+	WinRoom	

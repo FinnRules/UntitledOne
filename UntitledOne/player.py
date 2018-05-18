@@ -66,5 +66,6 @@ class Player():
 		check_item = input('Item to use? ')
 		for i in range(len(self.inventory)):
 			if check_item == self.inventory[i].name:
-				self.inventory[i].use_item #add use item method to item
+				if isinstance(self.inventory[i], Usable):
+					self.inventory[i].use_item #add use item method to item
 			

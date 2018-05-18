@@ -118,3 +118,6 @@ class WinRoom(MapTile):
 
 	def modify_player(self, player):
 		player.victory = True
+
+#additional rooms (from resources folder)
+from resources import roompack

@@ -28,4 +28,8 @@ class Scalpel(Weapon):
 	def __init__(self):
 		super().__init__(name="Scalpel", description="Small, but sharp", value=5, damage=5)
 
+class Usable(Item):
+	def __init__(self, name, description, value, damage):
+		#add code here
+
 from resources import itempack

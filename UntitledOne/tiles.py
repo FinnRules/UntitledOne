@@ -77,7 +77,7 @@ class NewCloset(GrabLootRoom):
 		super().__init__(x, y, items.Scalpel())
 
 	def intro_text(self):
-		return """You find a small closet, a small syringe lies on the floor"""
+		return """You find a small closet, a small scalpel lies on the floor"""
 
 class Closet(LootRoom):
 	def __init__(self, x, y):

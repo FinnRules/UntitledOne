@@ -54,6 +54,22 @@ class LootRoom(MapTile):
 	def modify_player(self, the_player):
 		self.add_loot(the_player)
 
+#room the waits for the player to specify that they want to grab an item, rather than giving it to them automatically
+class GrabLootRoom(MapTile):
+	def __init__(self, x, y, item):
+		self.item = item
+		super().__init__(x, y)
+		
+	def modify_player(self, the_player):
+		pass	
+
+class NewCloset(GrabLootRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, items.Syringe())
+
+	def intro_text(self):
+		return """You find a small closet, a small syringe lies on the floor"""		
+
 class Closet(LootRoom):
 	def __init__(self, x, y):
 		super().__init__(x, y, items.Syringe())

@@ -120,4 +120,4 @@ class WinRoom(MapTile):
 		player.victory = True
 
 #additional rooms (from resources folder)
-from resources import roompack
+from resources import tilepack

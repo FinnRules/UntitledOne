@@ -31,5 +31,6 @@ class Scalpel(Weapon):
 class Usable(Item):
 	def __init__(self, name, description, value, damage):
 		#add code here
+		
 
 from resources import itempack

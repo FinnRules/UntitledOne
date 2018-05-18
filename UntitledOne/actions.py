@@ -41,3 +41,7 @@ class Flee(Action):
 class Grab(Action):
 	def __init__(self, tile):
 		super().__init__(method=Player.grab, name='Grab', hotkey='g', tile=tile)
+
+class Use(Action):
+	def __init__(self):
+		super().__init(method=Player.use, name='Use', hotkey='u')

@@ -23,3 +23,30 @@ class <Name>(LootRoom):
 
   def intro_text(self):
     return """Room text"""
+
+#mob room
+class <Name>(MobRoom):
+  def __init__(self, x, y):
+    super().__init__(x, y, <enemy>) #same formatting as item, eg enemies.Guard()
+    
+  def intro_text(self):
+    if self.enemy.is_alive():
+      return """text if enemy is alive"""
+    else:
+      return """text if enemy is dead"""
+
+#end room (should be used sparingly)
+class <Name>(MapTile):
+  def intro_text(self):
+    return """Room text"""
+  
+  def modify_player(self, player):
+    player.victory = True
+
+#instakill room
+class <Name>(MapTile):
+  def intro_text(self):
+    return """Room text"""
+
+  def modify_player(self, player):
+    player.hp = 0 #alternativily if you want to just dock some amount of damage: player.hp -= 10 etc

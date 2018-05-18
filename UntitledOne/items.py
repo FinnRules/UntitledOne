@@ -1,3 +1,4 @@
+
 class Item():
 	def __init__(self, name, description, value):
 		self.name = name
@@ -41,6 +42,6 @@ class Book(Usable):
 
 	def use_item(self):
 		print("""<Book contents>""")
-		
+
 
 from resources import itempack

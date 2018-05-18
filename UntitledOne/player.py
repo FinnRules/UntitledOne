@@ -3,7 +3,7 @@ import items, world
 
 class Player():
 	def __init__(self):
-		self.inventory = [items.Cash(5), items.Syringe()] #creates array to store inv with starting items
+		self.inventory = [items.Cash(5), items.Syringe(), items.Book()] #creates array to store inv with starting items
 		self.hp = 50
 		self.location_x, self.location_y = world.starting_position
 		self.victory = False
@@ -65,7 +65,8 @@ class Player():
 	def use(self):
 		check_item = input('Item to use? ')
 		for i in range(len(self.inventory)):
-			if check_item == self.inventory[i].name:
-				if isinstance(self.inventory[i], Usable):
-					self.inventory[i].use_item #add use item method to item
-			
+				if check_item == self.inventory[i].name:
+			#		print(self.inventory[i].name)
+			#	if isinstance(self.inventory[i], Usable):
+			#	Returns NameError because it cannot find the class 'Usable' from items.py for a reason that is beyond me
+					self.inventory[i].use_item() #crashes if you try to use a non Usable item

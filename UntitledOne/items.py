@@ -24,3 +24,6 @@ class Cash(Item):
 		self.amt = amt
 		super().__init__(name="Cash", description="A pile of {} bills".format(str(self.amt)), value=self.amt)
 
+class Scalpel(Weapon):
+	def __init__(self):
+		super().__init__(name="Scalpel", description="Small, but sharp", value=5, damage=5)

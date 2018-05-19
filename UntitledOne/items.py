@@ -10,7 +10,7 @@ class Item():
 
 	def use_item(self):
 		print("{} doesn't seem to do anything".format(self.name))
-	
+
 class Weapon(Item):
 	def __init__(self, name, description, value, damage):
 		self.damage = damage
@@ -37,7 +37,7 @@ class Book(Item):
 		super().__init__(name="Book", description="A sizable volume with yellowing pages", value=5)
 
 	def use_item(self):
-		print("""<Book contents>""")
+		print("""\n<Book contents>\n""")
 
 
 from resources import itempack

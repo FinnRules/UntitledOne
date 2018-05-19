@@ -26,7 +26,7 @@ class MapTile:
 	def available_actions(self):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
-		moves.append(actions.Use())
+		moves.append(actions.Use(tile=self))
 
 		return moves
 
@@ -50,8 +50,10 @@ class LootRoom(MapTile):
 
 #room the waits for the player to specify that they want to grab an item, rather than giving it to them automatically
 class GrabLootRoom(MapTile):
-	def __init__(self, x, y, item):
-		self.item = item
+	def __init__(self, x, y, *args):
+		self.item = []
+		for arg in args:
+			self.item.append(arg)
 		super().__init__(x, y)
 
 
@@ -61,7 +63,7 @@ class GrabLootRoom(MapTile):
 	def available_actions(self):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
-		if self.item != None:
+		if len(self.item) != 0:
 			moves.append(actions.Grab(tile=self))
 
 		return moves
@@ -89,5 +91,38 @@ class WinRoom(MapTile):
 	def modify_player(self, player):
 		player.victory = True
 
+#place to hold many rooms in the game
+#hallway
+class Hallway(MapTile):
+	def intro_text(self):
+		return """\nAn empty hallway. Musty and stained carpet greets the dull white walls at cracked trim\n"""
+
+	def modify_player(self, the_player):
+		pass #no effect
+
+class NewCloset(GrabLootRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, items.Syringe(), items.Book())
+
+	def intro_text(self):
+		return """\nYou find a small closet, a small scalpel lies on the floor\n"""
+
+class Closet(LootRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, items.Syringe())
+
+	def intro_text(self):
+		return """\nYou enter a cramped room, a dim light illuminates empty shelves, bearing only a small empty syringe\n"""
+
+class GuardRoom(MobRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, enemies.Guard())
+
+	def intro_text(self):
+		if self.enemy.is_alive():
+			return """\nA guard bars the way\n"""
+		else:
+			return """\nA guard lies on the ground, his blood splattered on the floor\n"""
+
 #additional rooms (from resources folder)
-from resources import tilepack
+#from resources import tilepack

@@ -10,7 +10,7 @@ def play():
 		room = world.tile_exists(player.location_x, player.location_y)
 		room.modify_player(player) #modifies the player based on the room
 		if player.is_alive() and not player.victory: #checks to see that player is not dead to room actions
-			print("Choose an action:\n")
+			print("Choose an action:")
 			available_actions = room.available_actions()
 			for action in available_actions:
 				print(action) #lists possible actions to player

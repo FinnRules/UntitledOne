@@ -67,3 +67,4 @@ class Player():
 		for i in range(len(self.inventory)):
 				if check_item == self.inventory[i].name:
 					self.inventory[i].use_item()
+					return

@@ -60,6 +60,7 @@ class Player():
 	def grab(self, tile):
 		if tile.item != None:
 			self.inventory.append(tile.item)
+			print("You pick up a {}".format(tile.item))
 			tile.item = None
 
 	def use(self):

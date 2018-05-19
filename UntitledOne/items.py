@@ -40,4 +40,4 @@ class Book(Item):
 		print("""\n<Book contents>\n""")
 
 
-from resources import itempack
+#from resources import itempack

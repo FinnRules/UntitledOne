@@ -66,7 +66,4 @@ class Player():
 		check_item = input('Item to use? ')
 		for i in range(len(self.inventory)):
 				if check_item == self.inventory[i].name:
-			#		print(self.inventory[i].name)
-			#	if isinstance(self.inventory[i], Usable):
-			#	Returns NameError because it cannot find the class 'Usable' from items.py for a reason that is beyond me
-					self.inventory[i].use_item() #crashes if you try to use a non Usable item
+					self.inventory[i].use_item()

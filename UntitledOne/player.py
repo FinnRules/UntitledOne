@@ -3,7 +3,7 @@ import items, world
 
 class Player():
 	def __init__(self):
-		self.inventory = [items.Cash(5), items.Syringe(), items.Book()] #creates array to store inv with starting items
+		self.inventory = [] #creates array to store inv with starting items
 		self.hp = 50
 		self.location_x, self.location_y = world.starting_position
 		self.victory = False
@@ -17,6 +17,7 @@ class Player():
 			action_method(**kwargs)
 
 	def print_inventory(self):
+		print('\n')
 		for item in self.inventory:
 			print(item, '\n')
 
@@ -58,10 +59,15 @@ class Player():
 		self.do_action(available_moves[r])
 
 	def grab(self, tile):
-		if tile.item != None:
-			self.inventory.append(tile.item)
-			print("You pick up a {}".format(tile.item))
-			tile.item = None
+		check_item = input('Item to grab?: ')
+		print(len(tile.item))
+		if len(tile.item) != 0:
+			for i in range(len(tile.item)):
+				if check_item == tile.item[i].name:
+					self.inventory.append(tile.item[i])
+					print("You pick up a {}".format(tile.item[i].name))
+					del tile.item[i]
+					return
 
 	def use(self):
 		check_item = input('Item to use? ')

@@ -1,5 +1,7 @@
 #Guide on creating rooms
 
+#Use \n to create newlines, before and after each text
+
 #tiles with no effects:
 class <Name>(MapTile):
   def intro_text(self):

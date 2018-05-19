@@ -32,14 +32,14 @@ class MapTile:
 
 class StartingRoom(MapTile):
 	def intro_text(self):
-		return """You wake up on the floor of a lab. You do not remember who you are or how you got here. In all four directions there lie doors"""
+		return """\nYou wake up on the floor of a lab. You do not remember who you are or how you got here. In all four directions there lie doors\n"""
 
 	def modify_player(self, the_player):
 		pass #no effect
 
 class Hallway(MapTile):
 	def intro_text(self):
-		return """An empty hallway. Musty and stained carpet greets the dull white walls at cracked trim"""
+		return """\nAn empty hallway. Musty and stained carpet greets the dull white walls at cracked trim\n"""
 
 	def modify_player(self, the_player):
 		pass #no effect
@@ -78,14 +78,14 @@ class NewCloset(GrabLootRoom):
 		super().__init__(x, y, items.Scalpel())
 
 	def intro_text(self):
-		return """You find a small closet, a small scalpel lies on the floor"""
+		return """\nYou find a small closet, a small scalpel lies on the floor\n"""
 
 class Closet(LootRoom):
 	def __init__(self, x, y):
 		super().__init__(x, y, items.Syringe())
 
 	def intro_text(self):
-		return """You enter a cramped room, a dim light illuminates empty shelves, bearing only a small empty syringe"""
+		return """\nYou enter a cramped room, a dim light illuminates empty shelves, bearing only a small empty syringe\n"""
 
 class MobRoom(MapTile):
 	def __init__(self, x, y, enemy):
@@ -95,7 +95,7 @@ class MobRoom(MapTile):
 	def modify_player(self, the_player):
 		if self.enemy.is_alive():
 			the_player.hp = the_player.hp - self.enemy.damage
-			print("{} does {} damage to you. You have {} HP remaining".format(self.enemy, self.enemy.damage, the_player.hp))
+			print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy, self.enemy.damage, the_player.hp))
 
 	def available_actions(self):
 		if self.enemy.is_alive():
@@ -109,13 +109,13 @@ class GuardRoom(MobRoom):
 
 	def intro_text(self):
 		if self.enemy.is_alive():
-			return """A guard bars the way"""
+			return """\nA guard bars the way\n"""
 		else:
-			return """A guard lies on the ground, his blood splattered on the floor"""
+			return """\nA guard lies on the ground, his blood splattered on the floor\n"""
 
 class WinRoom(MapTile):
 	def intro_text(self):
-		return """You feel the hot sun beat down on your face. Your eyes strain as its glow reaches you in what feels like a lifetime. You are free"""
+		return """\nYou feel the hot sun beat down on your face. Your eyes strain as its glow reaches you in what feels like a lifetime. You are free\n"""
 
 	def modify_player(self, player):
 		player.victory = True

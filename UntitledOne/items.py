@@ -8,6 +8,9 @@ class Item():
 	def __str__(self):
 		return "{}\n=====\n{}\nValue: {}\n".format(self.name, self.description, self.value)
 
+	def use_item(self):
+		print("{} doesn't seem to do anything".format(self.name))
+	
 class Weapon(Item):
 	def __init__(self, name, description, value, damage):
 		self.damage = damage
@@ -29,14 +32,7 @@ class Scalpel(Weapon):
 	def __init__(self):
 		super().__init__(name="Scalpel", description="Small, but sharp", value=5, damage=5)
 
-class Usable(Item):
-	def __init__(self, name, description, value):
-		super().__init__(name, description, value)
-
-	def use_item(self):
-		raise NotImplementedError()
-
-class Book(Usable):
+class Book(Item):
 	def __init__(self):
 		super().__init__(name="Book", description="A sizable volume with yellowing pages", value=5)
 

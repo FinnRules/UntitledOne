@@ -1,12 +1,15 @@
 import world
 from player import Player
 
+print("""\n   _/    _/         _/      _/   _/          _/     _/_/_/_/\n  _/    _/       _/_/_/  _/_/_/ _/ _/_/_/   _/     _/    _/        _/_/_/\n _/    _/ _/_/_/  _/  _/  _/   _/ _/  _/ _/_/     _/    _/ _/_/_/ _/  _/\n_/_/_/_/ _/  _/  _/  _/  _/   _/ _/_/   _/_/     _/_/_/_/ _/  _/ _/_/""")
+
 def play():
 	world.load_tiles()
 	player = Player() #creates player as an object of the Player class
 	room = world.tile_exists(player.location_x, player.location_y)
 	print(room.intro_text())
-	while player.is_alive() and not player.victory:
+	player.isquit = False
+	while player.is_alive() and not player.victory and not player.isquit:
 		room = world.tile_exists(player.location_x, player.location_y)
 		room.modify_player(player) #modifies the player based on the room
 		if player.is_alive() and not player.victory: #checks to see that player is not dead to room actions
@@ -22,3 +25,9 @@ def play():
 
 if __name__ == "__main__":
 	play()
+
+
+#   _/    _/         _/      _/   _/          _/     _/_/_/_/\n
+#  _/    _/       _/_/_/  _/_/_/ _/ _/_/_/   _/     _/    _/        _/_/_/\n
+# _/    _/ _/_/_/  _/  _/  _/   _/ _/  _/ _/_/     _/    _/ _/_/_/ _/  _/\n
+#_/_/_/_/ _/  _/  _/  _/  _/   _/ _/_/   _/_/     _/_/_/_/ _/  _/ _/_/\n

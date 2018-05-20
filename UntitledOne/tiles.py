@@ -74,7 +74,7 @@ class MobRoom(MapTile):
 		super().__init__(x, y)
 
 	def modify_player(self, the_player):
-		if self.enemy.is_alive():
+		if self.enemy.is_alive() and self.enemy.aggro:
 			the_player.hp = the_player.hp - self.enemy.damage
 			print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy, self.enemy.damage, the_player.hp))
 

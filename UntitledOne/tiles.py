@@ -27,6 +27,7 @@ class MapTile:
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
 		moves.append(actions.Use(tile=self))
+		moves.append(actions.Quit())
 
 		return moves
 
@@ -63,6 +64,8 @@ class GrabLootRoom(MapTile):
 	def available_actions(self):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
+		moves.append(actions.Use(tile=self))
+		moves.append(actions.Quit())
 		if len(self.item) != 0:
 			moves.append(actions.Grab(tile=self))
 
@@ -76,13 +79,17 @@ class MobRoom(MapTile):
 	def modify_player(self, the_player):
 		if self.enemy.is_alive() and self.enemy.aggro:
 			the_player.hp = the_player.hp - self.enemy.damage
-			print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy, self.enemy.damage, the_player.hp))
+			print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy.name, self.enemy.damage, the_player.hp))
 
 	def available_actions(self):
-		if self.enemy.is_alive():
-			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Talk(tile=self, enemy=enemy]
+		if self.enemy.is_alive() and self.enemy.aggro:
+			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Talk(tile=self, enemy=self.enemy), actions.Quit()]
 		else:
-			return self.adjacent_moves()
+			moves = self.adjacent_moves()
+			moves.append(actions.ViewInventory())
+			moves.append(actions.Use(tile=self))
+			moves.append(actions.Quit())
+			return moves
 
 class WinRoom(MapTile):
 	def intro_text(self):
@@ -124,4 +131,5 @@ class TunnelSociety(MobRoom):
 		super().__init__(x, y, enemies.TunnelDweller())
 
 	def intro_text(self):
+		print("\nYou find yourself in a small clearing with several dirty people digging hurridly at a dirt wall")
 		self.enemy.talk()

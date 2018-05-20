@@ -30,6 +30,7 @@ class MapTile:
 
 		return moves
 
+#Z/39
 class StartingRoom(MapTile):
 	def intro_text(self):
 		return """\nYou wake up on the floor of a lab. You do not remember who you are or how you got here. In all four directions there lie doors\n"""
@@ -48,7 +49,6 @@ class LootRoom(MapTile):
 	def modify_player(self, the_player):
 		self.add_loot(the_player)
 
-#room the waits for the player to specify that they want to grab an item, rather than giving it to them automatically
 class GrabLootRoom(MapTile):
 	def __init__(self, x, y, *args):
 		self.item = []
@@ -101,21 +101,15 @@ class Hallway(MapTile):
 	def modify_player(self, the_player):
 		pass #no effect
 
-class NewCloset(GrabLootRoom):
+class StartingCloset(GrabLootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, items.Syringe(), items.Book())
+		super().__init__(x, y, items.Syringe(), items.StartingClosetPaper())
 
 	def intro_text(self):
-		return """\nYou find a small closet, a small scalpel lies on the floor\n"""
+		return """\nYou find a small closet, a small syringe lies on the floor. A cruppled paper is taped to the door\n"""
 
-class Closet(LootRoom):
-	def __init__(self, x, y):
-		super().__init__(x, y, items.Syringe())
-
-	def intro_text(self):
-		return """\nYou enter a cramped room, a dim light illuminates empty shelves, bearing only a small empty syringe\n"""
-
-class GuardRoom(MobRoom):
+#Z/43, AD/49
+class LabGuard(MobRoom):
 	def __init__(self, x, y):
 		super().__init__(x, y, enemies.Guard())
 

@@ -49,3 +49,7 @@ class Use(Action):
 class Talk(Action):
 	def __init__(self, tile, enemy):
 		super().__init__(method=Player.talk, name='Talk', hotkey='t', tile=tile, enemy=enemy)
+
+class Quit(Action):
+	def __init__(self):
+		super().__init__(method=Player.quit, name='Quit', hotkey='q')

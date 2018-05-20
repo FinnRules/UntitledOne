@@ -39,5 +39,3 @@ class Book(Item):
 	def use_item(self):
 		print("""\n<Book contents>\n""")
 
-
-#from resources import itempack

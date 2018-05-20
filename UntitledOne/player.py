@@ -76,5 +76,5 @@ class Player():
 					self.inventory[i].use_item()
 					return
 
-	def talk(self, enemy):
-		#
+	def talk(self, tile, enemy):
+		tile.enemy.talk()

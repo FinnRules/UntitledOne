@@ -3,6 +3,7 @@ class Enemy:
 		self.name = name
 		self.hp = hp
 		self.damage = damage
+		self.talknum = 0
 
 	def is_alive(self):
 		return self.hp > 0

@@ -75,3 +75,6 @@ class Player():
 				if check_item == self.inventory[i].name:
 					self.inventory[i].use_item()
 					return
+
+	def talk(self, enemy):
+		#

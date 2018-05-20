@@ -34,6 +34,7 @@ class Scalpel(Weapon):
 	def __init__(self):
 		super().__init__(name="Scalpel", description="Small, but sharp", value=3, damage=3)
 
+#Appears in StartingCloset
 class StartingClosetPaper(Item):
 	def __init__(self):
 		super().__init__(name="Paper", description="A notice of some sort", value=1)

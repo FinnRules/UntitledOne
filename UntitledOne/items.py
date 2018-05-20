@@ -34,10 +34,10 @@ class Scalpel(Weapon):
 	def __init__(self):
 		super().__init__(name="Scalpel", description="Small, but sharp", value=3, damage=3)
 
-class Paper(Item):
+class StartingClosetPaper(Item):
 	def __init__(self):
 		super().__init__(name="Paper", description="A notice of some sort", value=1)
 
 	def use_item(self):
-		print("""\nRed Sector Lab A Sign-In Sheet:\n3/5: Harry Allen\n3/6: Harry Allen\n3/7: Harry Allen\n3/8: Harry Allen\n<The rest of the sheet is obscurred with heavy pen scribbles""")
+		print("""\nRed Sector Closet Borrowing Sheet:\n3/5: Harry Allen\n3/6: Harry Allen\n3/7: Harry Allen\n3/8: Harry Allen\n<The rest of the sheet is obscurred with heavy pen scribbles""")
 

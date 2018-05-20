@@ -6,6 +6,9 @@ class Enemy:
 
 	def is_alive(self):
 		return self.hp > 0
+	
+	def talk(self):
+		pass
 
 class Guard(Enemy):
 	def __init__(self):

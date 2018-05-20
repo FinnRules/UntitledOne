@@ -47,5 +47,5 @@ class Use(Action):
 		super().__init__(method=Player.use, name='Use', hotkey='u', tile=tile)
 
 class Talk(Action):
-	def __init__(self, enemy):
-		super().__init__(method=Player.talk, name='Talk', hotkey='t', enemy=enemy)
+	def __init__(self, tile, enemy):
+		super().__init__(method=Player.talk, name='Talk', hotkey='t', tile=tile, enemy=enemy)

@@ -118,3 +118,10 @@ class LabGuard(MobRoom):
 			return """\nA guard bars the way\n"""
 		else:
 			return """\nA guard lies on the ground, his blood splattered on the floor\n"""
+
+class TunnelSociety(MobRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, enemies.TunnelDweller())
+
+	def intro_text(self):
+		self.enemy.talk()

@@ -7,6 +7,7 @@ class Player():
 		self.hp = 50
 		self.location_x, self.location_y = world.starting_position
 		self.victory = False
+		self.isquit = False
 
 	def is_alive(self):
 		return self.hp > 0 #returns true if the player is still alive
@@ -46,12 +47,16 @@ class Player():
 				max_dmg = i.damage
 				best_weapon = i
 
-		print("You use {} against {}!".format(best_weapon.name, enemy.name))
-		enemy.hp -= best_weapon.damage
-		if not enemy.is_alive():
-			print("You killed {}!".format(enemy.name))
+		if best_weapon != None:
+			print("You use {} against {}!".format(best_weapon.name, enemy.name))
+			enemy.hp -= best_weapon.damage
+			enemy.aggro = True
+			if not enemy.is_alive():
+				print("You killed {}!".format(enemy.name))
+			else:
+				print("{} HP is {}.".format(enemy.name, enemy.hp))
 		else:
-			print("{} HP is {}.".format(enemy.name, enemy.hp))
+			print("You are regrettably unarmed")
 
 	def flee(self, tile):
 		available_moves = tile.adjacent_moves()
@@ -69,7 +74,7 @@ class Player():
 					del tile.item[i]
 					return
 
-	def use(self):
+	def use(self, tile):
 		check_item = input('Item to use? ')
 		for i in range(len(self.inventory)):
 				if check_item == self.inventory[i].name:
@@ -78,3 +83,6 @@ class Player():
 
 	def talk(self, tile, enemy):
 		tile.enemy.talk()
+
+	def quit(self):
+		self.isquit = True

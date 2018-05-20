@@ -19,9 +19,11 @@ class Weapon(Item):
 	def __str__(self):
 		return "{}\n====\n{}\nValue: {}\nDamage: {}".format(self.name, self.description, self.value, self.damage)
 
+	
+#Items:
 class Syringe(Weapon):
 	def __init__(self):
-		super().__init__(name="Syringe", description="Empty, but still sharp", value=2, damage=3)
+		super().__init__(name="Syringe", description="Empty, but still sharp", value=2, damage=1)
 
 class Cash(Item):
 	def __init__(self, amt):
@@ -30,12 +32,12 @@ class Cash(Item):
 
 class Scalpel(Weapon):
 	def __init__(self):
-		super().__init__(name="Scalpel", description="Small, but sharp", value=5, damage=5)
+		super().__init__(name="Scalpel", description="Small, but sharp", value=3, damage=3)
 
-class Book(Item):
+class Paper(Item):
 	def __init__(self):
-		super().__init__(name="Book", description="A sizable volume with yellowing pages", value=5)
+		super().__init__(name="Paper", description="A notice of some sort", value=1)
 
 	def use_item(self):
-		print("""\n<Book contents>\n""")
+		print("""\nRed Sector Lab A Sign-In Sheet:\n3/5: Harry Allen\n3/6: Harry Allen\n3/7: Harry Allen\n3/8: Harry Allen\n<The rest of the sheet is obscurred with heavy pen scribbles""")
 

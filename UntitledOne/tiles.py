@@ -80,7 +80,7 @@ class MobRoom(MapTile):
 
 	def available_actions(self):
 		if self.enemy.is_alive():
-			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy)]
+			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Talk(tile=self, enemy=enemy]
 		else:
 			return self.adjacent_moves()
 

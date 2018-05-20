@@ -16,4 +16,3 @@ class LabTech(Enemy):
 	def __init__(self):
 		super().__init__(name='Lab Technician', hp=5, damage=2)
 
-#from resources import enemypack

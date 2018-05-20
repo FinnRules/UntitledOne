@@ -91,6 +91,7 @@ class WinRoom(MapTile):
 	def modify_player(self, player):
 		player.victory = True
 
+#===========================================================================================================
 #place to hold many rooms in the game
 #hallway
 class Hallway(MapTile):
@@ -123,6 +124,3 @@ class GuardRoom(MobRoom):
 			return """\nA guard bars the way\n"""
 		else:
 			return """\nA guard lies on the ground, his blood splattered on the floor\n"""
-
-#additional rooms (from resources folder)
-#from resources import tilepack

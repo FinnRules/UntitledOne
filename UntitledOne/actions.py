@@ -45,3 +45,7 @@ class Grab(Action):
 class Use(Action):
 	def __init__(self, tile):
 		super().__init__(method=Player.use, name='Use', hotkey='u', tile=tile)
+
+class Talk(Action):
+	def __init__(self, enemy):
+		super().__init__(method=Player.talk, name='Talk', hotkey='t', enemy=enemy)

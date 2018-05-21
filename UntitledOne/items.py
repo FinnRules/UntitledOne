@@ -9,7 +9,7 @@ class Item():
 		return "{}\n=====\n{}\nValue: {}\n".format(self.name, self.description, self.value)
 
 	def use_item(self):
-		print("{} doesn't seem to do anything".format(self.name))
+		print("\n{} doesn't seem to do anything\n".format(self.name))
 
 class Weapon(Item):
 	def __init__(self, name, description, value, damage):
@@ -41,3 +41,8 @@ class StartingClosetPaper(Item):
 
 	def use_item(self):
 		print("""\nRed Sector Closet Borrowing Sheet:\n3/5: Harry Allen\n3/6: Harry Allen\n3/7: Harry Allen\n3/8: Harry Allen\n3/9: Harry Al\n3/10: Harry Alfred\n<The rest of the sheet is obscurred with heavy pen scribbles>""")
+
+#Shovel: appears in TunnelSociety
+class Shovel(Weapon):
+	def __init__(self):
+		super().__init__(name="Shovel", description="A small metal shovel, heavily worn", value=1, damage=7)

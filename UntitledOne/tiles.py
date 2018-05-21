@@ -72,8 +72,11 @@ class GrabLootRoom(MapTile):
 		return moves
 
 class MobRoom(MapTile):
-	def __init__(self, x, y, enemy):
+	def __init__(self, x, y, enemy, *args):
 		self.enemy = enemy
+		self.item = []
+		for arg in args:
+			self.item.append(arg)
 		super().__init__(x, y)
 
 	def modify_player(self, the_player):
@@ -84,11 +87,20 @@ class MobRoom(MapTile):
 	def available_actions(self):
 		if self.enemy.is_alive() and self.enemy.aggro:
 			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Talk(tile=self, enemy=self.enemy), actions.Quit()]
+		elif self.enemy.is_alive() and not self.enemy.aggro:
+			moves = self.adjacent_moves()
+			moves.append(actions.ViewInventory())
+			moves.append(actions.Use(tile=self))
+			moves.append(actions.Quit())
+			moves.append(actions.Attack(enemy=self.enemy))
+			return moves
 		else:
 			moves = self.adjacent_moves()
 			moves.append(actions.ViewInventory())
 			moves.append(actions.Use(tile=self))
 			moves.append(actions.Quit())
+			if len(self.item) != 0:
+				moves.append(actions.Grab(tile=self))
 			return moves
 
 class WinRoom(MapTile):
@@ -128,8 +140,11 @@ class LabGuard(MobRoom):
 
 class TunnelSociety(MobRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, enemies.TunnelDweller())
+		super().__init__(x, y, enemies.TunnelDweller(), items.Shovel())
 
 	def intro_text(self):
-		print("\nYou find yourself in a small clearing with several dirty people digging hurridly at a dirt wall")
-		self.enemy.talk()
+		if self.enemy.is_alive():
+			print("\nYou find yourself in a small clearing with several dirty people digging hurridly at a dirt wall")
+			self.enemy.talk()
+		else:
+			print("\nThe bodies of the tunnelers lie at your feet, bathing the ground in crimson, their shovel still clutched in their hands\n")

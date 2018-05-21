@@ -137,7 +137,22 @@ class LabGuard(MobRoom):
 			return """\nA guard bars the way\n"""
 		else:
 			return """\nA guard lies on the ground, his blood splattered on the floor\n"""
+#AB/39
+class HallwayTunnel(MapTile):
+	def intro_text(self):
+		return """\nThe hallway stretches onward, with a small light flickering from a vent\n""""
+	
+	def modify_player(self, the_player):
+		pass
 
+#AB/40-41, etc
+class Tunnel(MapTile):
+	def intro_text(self):
+		return """\nThe walls, made only of compacked dirt, held up but wood posts and supports, stretch further onward\n"""
+	
+	def modify_player(self, the_player):
+		pass
+#AB/49
 class TunnelSociety(MobRoom):
 	def __init__(self, x, y):
 		super().__init__(x, y, enemies.TunnelDweller(), items.Shovel())

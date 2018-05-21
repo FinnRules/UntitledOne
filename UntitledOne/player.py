@@ -48,15 +48,16 @@ class Player():
 				best_weapon = i
 
 		if best_weapon != None:
-			print("You use {} against {}!".format(best_weapon.name, enemy.name))
+			print("\nYou use {} against {}!\n".format(best_weapon.name, enemy.name))
 			enemy.hp -= best_weapon.damage
 			enemy.aggro = True
 			if not enemy.is_alive():
-				print("You killed {}!".format(enemy.name))
+				print("\nYou killed {}!\n".format(enemy.name))
+				print(world.tile_exists(self.location_x, self.location_y).intro_text())
 			else:
-				print("{} HP is {}.".format(enemy.name, enemy.hp))
+				print("\n{} HP is {}.\n".format(enemy.name, enemy.hp))
 		else:
-			print("You are regrettably unarmed")
+			print("\nYou are regrettably unarmed\n")
 
 	def flee(self, tile):
 		available_moves = tile.adjacent_moves()
@@ -65,12 +66,11 @@ class Player():
 
 	def grab(self, tile):
 		check_item = input('Item to grab?: ')
-		print(len(tile.item))
 		if len(tile.item) != 0:
 			for i in range(len(tile.item)):
 				if check_item == tile.item[i].name:
 					self.inventory.append(tile.item[i])
-					print("You pick up a {}".format(tile.item[i].name))
+					print("\nYou pick up a {}\n".format(tile.item[i].name))
 					del tile.item[i]
 					return
 

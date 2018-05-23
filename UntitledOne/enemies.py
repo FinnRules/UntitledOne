@@ -38,3 +38,25 @@ class TunnelDweller(Enemy):
 			return
 		print(self.dialog[1])
 		return
+
+class Computer(Enemy):
+	def __init__(self):
+		super().__init__(name='Computer', hp=10, damage=3)
+
+	def talk(self):
+		self.dialog = []
+		
+		command = input("admin@minni ~ $ ")
+		
+		if command == "sudo python3 opendoors.py":
+			sudo = input("[sudo] password for admin: ")
+				if sudo == "minniadmin":
+					#code to make exit possible
+					print("<Process complete>")
+		if command == "ls":
+			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt")
+
+		if command == "ls -a":
+			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt\n.securityconcerns.txt")
+
+		if command ==

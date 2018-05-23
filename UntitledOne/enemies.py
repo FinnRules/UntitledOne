@@ -53,10 +53,32 @@ class Computer(Enemy):
 				if sudo == "minniadmin":
 					#code to make exit possible
 					print("<Process complete>")
-		if command == "ls":
+				else:
+					print("Sorry, try again")
+		
+		elif command == "python3 opendoors.py":
+				print("Permission denied: requires root level access")
+		
+		elif command == "ls":
 			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt")
 
-		if command == "ls -a":
+		elif command == "ls -a":
 			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt\n.securityconcerns.txt")
 
-		if command ==
+		elif command == "cat emloyeelist.txt":
+			print("<text>")
+
+		elif command == "cat data_jan-june.txt":
+			print("<text>")
+
+		elif command == "cat towhomconcerns.txt":
+			print("<text>")
+
+		elif command == "cat .securityconcerns.txt":
+			print("<text>")
+
+		else:
+			print(command + ": command not found")
+			
+			
+			

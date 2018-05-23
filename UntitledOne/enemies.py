@@ -39,7 +39,7 @@ class TunnelDweller(Enemy):
 		print(self.dialog[1])
 		return
 
-class Computer(Enemy):
+class ComputerY34(Enemy):
 	def __init__(self):
 		super().__init__(name='Computer', hp=10, damage=3)
 

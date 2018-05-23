@@ -163,3 +163,21 @@ class TunnelSociety(MobRoom):
 			self.enemy.talk()
 		else:
 			print("\nThe bodies of the tunnelers lie at your feet, bathing the ground in crimson, their shovel still clutched in their hands\n")
+
+class ComputerLab(MobRoom):
+	def __init__(self, x, y):
+		super().__init__(x, y, enemies.ComputerY34(), items.ComputerNote())
+
+	def intro_text(self):
+		return """The door swings open to reveal a small computer lab, empty but for a moniter dimly flickering in a corner. A note is stuck to the upper left hand corner"""			
+	
+	def available_moves(self):
+		moves = self.adjacent_moves()
+		moves.append(actions.ViewInventory())
+		moves.append(actions.Use(tile=self))
+		moves.append(actions.Quit())
+		if len(self.item) != 0:
+			moves.append(actions.Grab(tile=self))
+		return moves
+	
+	

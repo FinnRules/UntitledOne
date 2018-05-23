@@ -46,3 +46,10 @@ class StartingClosetPaper(Item):
 class Shovel(Weapon):
 	def __init__(self):
 		super().__init__(name="Shovel", description="A small metal shovel, heavily worn", value=1, damage=7)
+
+class ComputerNote(Item):
+	def __init__(self):
+		super().__init__(name="Note", description="A sticky note with a few words", value=0)
+
+	def use_item(self):
+		print("""\nbash commands:\ncat views text files\nls lists files\nDarrel if you ask me again I'm going to kill you")

@@ -1,4 +1,4 @@
-LGPL for code by FinnRules and C4K3_Slayer
+GPL for code by FinnRules and C4K3_Slayer
 
 Based off code from https://github.com/phillipjohnson/text-adventure-tut (MIT License)
 

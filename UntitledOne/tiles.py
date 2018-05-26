@@ -93,6 +93,7 @@ class MobRoom(MapTile):
 			moves.append(actions.Use(tile=self))
 			moves.append(actions.Quit())
 			moves.append(actions.Attack(enemy=self.enemy))
+			moves.append(actions.Talk(tile=self, enemy=self.enemy))
 			return moves
 		else:
 			moves = self.adjacent_moves()
@@ -140,7 +141,7 @@ class LabGuard(MobRoom):
 #AB/39
 class HallwayTunnel(MapTile):
 	def intro_text(self):
-		return """\nThe hallway stretches onward, with a small light flickering from a vent\n""""
+		return """\nThe hallway stretches onward, with a small light flickering from a vent\n"""
 	
 	def modify_player(self, the_player):
 		pass
@@ -169,13 +170,14 @@ class ComputerLab(MobRoom):
 		super().__init__(x, y, enemies.ComputerY34(), items.ComputerNote())
 
 	def intro_text(self):
-		return """The door swings open to reveal a small computer lab, empty but for a moniter dimly flickering in a corner. A note is stuck to the upper left hand corner"""			
+		return """\nThe door swings open to reveal a small computer lab, empty but for a moniter dimly flickering in a corner. A note is stuck to the upper left hand corner\n"""			
 	
-	def available_moves(self):
+	def available_actions(self):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
 		moves.append(actions.Use(tile=self))
 		moves.append(actions.Quit())
+		moves.append(actions.Talk(tile=self, enemy=self.enemy))
 		if len(self.item) != 0:
 			moves.append(actions.Grab(tile=self))
 		return moves

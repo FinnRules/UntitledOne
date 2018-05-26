@@ -19,7 +19,7 @@ class Weapon(Item):
 	def __str__(self):
 		return "{}\n====\n{}\nValue: {}\nDamage: {}".format(self.name, self.description, self.value, self.damage)
 
-	
+
 #Items:
 class Syringe(Weapon):
 	def __init__(self):
@@ -52,4 +52,4 @@ class ComputerNote(Item):
 		super().__init__(name="Note", description="A sticky note with a few words", value=0)
 
 	def use_item(self):
-		print("""\nbash commands:\ncat views text files\nls lists files\nDarrel if you ask me again I'm going to kill you")
+		print("\nDarrel, if you ask me again I'm gonna kill you\nbash commands:\ncat views text files\nls lists files\n")

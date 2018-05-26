@@ -29,56 +29,52 @@ class TunnelDweller(Enemy):
 	def talk(self):
 		self.dialog = ["\nTunnel Dweller: Who are you? Do you mean to hurt us?\n", "\nTunnel Dweller: In that case you are welcome, but disturb nothing\n"]
 		self.fightwords = ["\nTunnel Dweller: We will defend the tunnel at all costs!\n"]
-
-		print(self.dialog[0])
-		response = input('y/n: ')
-		if response != 'n':
-			print(self.fightwords[0])
-			self.aggro = True
+		if self.aggro != True:
+			print(self.dialog[0])
+			response = input('y/n: ')
+			if response != 'n':
+				print(self.fightwords[0])
+				self.aggro = True
+				return
+			print(self.dialog[1])
 			return
-		print(self.dialog[1])
-		return
 
 class ComputerY34(Enemy):
 	def __init__(self):
 		super().__init__(name='Computer', hp=10, damage=3)
 
 	def talk(self):
-		self.dialog = []
 		
 		command = input("admin@minni ~ $ ")
 		
 		if command == "sudo python3 opendoors.py":
 			sudo = input("[sudo] password for admin: ")
-				if sudo == "minniadmin":
-					#code to make exit possible
-					print("<Process complete>")
-				else:
-					print("Sorry, try again")
+			if sudo == "minniadmin":
+				#code to make exit possible
+				print("<Process complete>\n")
+			else:
+				print("Sorry, try again\n")
 		
 		elif command == "python3 opendoors.py":
-				print("Permission denied: requires root level access")
+				print("Permission denied: requires root level access\n")
 		
 		elif command == "ls":
-			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt")
+			print("\nopendoors.py	employeelist.txt	data_jan-june.txt	towhomitconcerns.txt\n")
 
 		elif command == "ls -a":
-			print("\nopendoors.py	employeelist.txt\ndata_jan-june.txt	towhomitconcerns.txt\n.securityconcerns.txt")
+			print("\nopendoors.py	employeelist.txt	data_jan-june.txt	towhomitconcerns.txt	.securityconcerns.txt\n")
 
 		elif command == "cat emloyeelist.txt":
-			print("<text>")
+			print("\n<text>\n")
 
 		elif command == "cat data_jan-june.txt":
-			print("<text>")
+			print("\n<text>\n")
 
 		elif command == "cat towhomconcerns.txt":
-			print("<text>")
+			print("\n<text>\n")
 
 		elif command == "cat .securityconcerns.txt":
-			print("<text>")
+			print("\n<text>\n")
 
 		else:
-			print(command + ": command not found")
-			
-			
-			
+			print("\n" + command + ": command not found\n")

@@ -1,9 +1,9 @@
 	WinRoom	
 	Hallway	
 	Hallway	
+	Hallway	ComputerLab
 	Hallway	
-	Hallway	
-	Hallway	TunnelSociety
+	Hallway	Tunnel	TunnelSociety
 StartingCloset	StartingRoom	LabGuard
 	Hallway	
 	Hallway	

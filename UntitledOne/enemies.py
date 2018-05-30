@@ -1,3 +1,4 @@
+import world
 class Enemy:
 	def __init__(self, name, hp, damage):
 		self.name = name
@@ -44,13 +45,13 @@ class ComputerY34(Enemy):
 		super().__init__(name='Computer', hp=10, damage=3)
 
 	def talk(self):
-		
 		command = input("admin@minni ~ $ ")
 		
 		if command == "sudo python3 opendoors.py":
 			sudo = input("[sudo] password for admin: ")
 			if sudo == "minniadmin":
 				#code to make exit possible
+				world.unlock(2, 5, False) #placeholder | see world.py for details
 				print("<Process complete>\n")
 			else:
 				print("Sorry, try again\n")

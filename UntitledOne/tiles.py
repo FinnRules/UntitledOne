@@ -4,6 +4,7 @@ class MapTile:
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
+		self.locked = False
 
 	def intro_text(self):
 		raise NotImplementedError()
@@ -13,13 +14,13 @@ class MapTile:
 
 	def adjacent_moves(self):
 		moves = []
-		if world.tile_exists(self.x + 1, self.y):
+		if world.tile_exists(self.x + 1, self.y) and not world.is_locked(self.x + 1, self.y):
 			moves.append(actions.MoveEast())
-		if world.tile_exists(self.x - 1, self.y):
+		if world.tile_exists(self.x - 1, self.y) and not world.is_locked(self.x - 1, self.y):
 			moves.append(actions.MoveWest())
-		if world.tile_exists(self.x, self.y - 1):
+		if world.tile_exists(self.x, self.y - 1) and not world.is_locked(self.x, self.y - 1):
 			moves.append(actions.MoveNorth())
-		if world.tile_exists(self.x, self.y + 1):
+		if world.tile_exists(self.x, self.y + 1) and not world.is_locked(self.x, self.y + 1):
 			moves.append(actions.MoveSouth())
 		return moves
 
@@ -148,6 +149,10 @@ class HallwayTunnel(MapTile):
 
 #AB/40-41, etc
 class Tunnel(MapTile):
+	def __init__(self, x, y):
+		super().__init__(x, y)
+		self.locked = True
+
 	def intro_text(self):
 		return """\nThe walls, made only of compacked dirt, held up but wood posts and supports, stretch further onward\n"""
 	

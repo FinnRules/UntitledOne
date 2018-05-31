@@ -24,11 +24,23 @@ class MapTile:
 			moves.append(actions.MoveSouth())
 		return moves
 
-	def available_actions(self):
+	def devcommands(self, the_player): #houses all dev commands and extends the moves list if the player is in dev mode
+		devcommandslist = []
+		devcommandslist.append(actions.Teleport())
+		devcommandslist.append(actions.MapInfo(tile=self))
+		devcommandslist.append(actions.Invin())
+		devcommandslist.append(actions.SetHp())
+		devcommandslist.append(actions.NpcHp(tile=self))
+		devcommandslist.append(actions.Settings())
+		return devcommandslist
+
+	def available_actions(self, the_player):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
 		moves.append(actions.Use(tile=self))
 		moves.append(actions.Quit())
+		if the_player.fsm:
+			moves.extend(self.devcommands(the_player))
 
 		return moves
 
@@ -62,13 +74,16 @@ class GrabLootRoom(MapTile):
 	def modify_player(self, the_player):
 		pass
 
-	def available_actions(self):
+	def available_actions(self, the_player):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
 		moves.append(actions.Use(tile=self))
 		moves.append(actions.Quit())
 		if len(self.item) != 0:
 			moves.append(actions.Grab(tile=self))
+
+		if the_player.fsm:
+			moves.extend(self.devcommands(the_player))
 
 		return moves
 
@@ -82,12 +97,26 @@ class MobRoom(MapTile):
 
 	def modify_player(self, the_player):
 		if self.enemy.is_alive() and self.enemy.aggro:
-			the_player.hp = the_player.hp - self.enemy.damage
-			print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy.name, self.enemy.damage, the_player.hp))
+			if not the_player.nv:
+				the_player.hp = the_player.hp - self.enemy.damage
+				print("\n{} does {} damage to you. You have {} HP remaining\n".format(self.enemy.name, self.enemy.damage, the_player.hp))
+			elif the_player.nv:
+				print("{} attempts to do {} damage [Prevented by Invincibility]\n".format(self.enemy.name, self.enemy.damage))
 
-	def available_actions(self):
+	def available_actions(self, the_player):
 		if self.enemy.is_alive() and self.enemy.aggro:
-			return [actions.Flee(tile=self), actions.Attack(enemy=self.enemy), actions.Talk(tile=self, enemy=self.enemy), actions.Quit()]
+			moves = []
+			moves.append(actions.ViewInventory())
+			moves.append(actions.Use(tile=self))
+			moves.append(actions.Flee(tile=self))
+			moves.append(actions.Attack(enemy=self.enemy))
+			moves.append(actions.Talk(tile=self, enemy=self.enemy))
+			moves.append(actions.Quit())
+			if the_player.fsm:
+				moves.extend(self.devcommands(the_player))
+
+			return moves
+
 		elif self.enemy.is_alive() and not self.enemy.aggro:
 			moves = self.adjacent_moves()
 			moves.append(actions.ViewInventory())
@@ -95,6 +124,9 @@ class MobRoom(MapTile):
 			moves.append(actions.Quit())
 			moves.append(actions.Attack(enemy=self.enemy))
 			moves.append(actions.Talk(tile=self, enemy=self.enemy))
+			if the_player.fsm:
+				moves.extend(self.devcommands(the_player))
+
 			return moves
 		else:
 			moves = self.adjacent_moves()
@@ -103,6 +135,10 @@ class MobRoom(MapTile):
 			moves.append(actions.Quit())
 			if len(self.item) != 0:
 				moves.append(actions.Grab(tile=self))
+
+			if the_player.fsm:
+				moves.extend(self.devcommands(the_player))
+
 			return moves
 
 class WinRoom(MapTile):
@@ -177,14 +213,19 @@ class ComputerLab(MobRoom):
 	def intro_text(self):
 		return """\nThe door swings open to reveal a small computer lab, empty but for a moniter dimly flickering in a corner. A note is stuck to the upper left hand corner\n"""			
 	
-	def available_actions(self):
+	def available_actions(self, the_player):
 		moves = self.adjacent_moves()
 		moves.append(actions.ViewInventory())
 		moves.append(actions.Use(tile=self))
 		moves.append(actions.Quit())
 		moves.append(actions.Talk(tile=self, enemy=self.enemy))
+
 		if len(self.item) != 0:
 			moves.append(actions.Grab(tile=self))
+
+		if the_player.fsm:
+			moves.extend(self.devcommands(the_player))
+
 		return moves
 	
 	

@@ -1,11 +1,11 @@
-	WinRoom	
-	Hallway	
-	Hallway	
-	Hallway	ComputerLab
-	Hallway	
-	Hallway	Tunnel	TunnelSociety
-StartingCloset	StartingRoom	LabGuard
-	Hallway	
-	Hallway	
-	Hallway	Hallway
-	WinRoom	
+	WinRoom			
+	Hallway	Hallway	Hallway	Hallway
+	Hallway			
+	Hallway	ComputerLab		
+	Hallway			
+	Hallway	Tunnel	TunnelSociety	
+StartingCloset	StartingRoom	LabGuard	Hallway	
+	Hallway			
+	Hallway			
+	Hallway	Hallway		
+	WinRoom			

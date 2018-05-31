@@ -14,9 +14,16 @@ def play():
 		room.modify_player(player) #modifies the player based on the room
 		if player.is_alive() and not player.victory: #checks to see that player is not dead to room actions
 			print("Choose an action:")
-			available_actions = room.available_actions()
-			for action in available_actions:
-				print(action) #lists possible actions to player
+			available_actions = room.available_actions(player)
+			if player.aa and not player.dr: #st: aa turns off listing all actions
+				for action in available_actions:
+					print(action) #lists possible actions to player
+			if player.dr: #st: dr lists only directional actions
+				partial_actions = room.adjacent_moves()
+				for action in partial_actions:
+					print(action)
+
+
 			action_input = input('Action: ') #takes action input from player
 			for action in available_actions:
 				if action_input == action.hotkey:

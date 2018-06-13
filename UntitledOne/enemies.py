@@ -51,7 +51,7 @@ class ComputerY34(Enemy):
 			sudo = input("[sudo] password for admin: ")
 			if sudo == "minniadmin":
 				#code to make exit possible
-				world.unlock(2, 5, False) #placeholder | see world.py for details
+				world.unlock(14, -5, False) #placeholder | see world.py for details
 				print("<Process complete>\n")
 			else:
 				print("Sorry, try again\n")

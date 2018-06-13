@@ -1,11 +1,65 @@
-	WinRoom	
-	Hallway	
-	Hallway	
-	Hallway	
-	Hallway	
-	Hallway	
-Closet	StartingRoom	GuardRoom
-	Hallway	
-	Hallway	
-	Hallway	Hallway
-	WinRoom	
+							Garden	GardenLoot	Garden																															
+		Garden	GardenLoot	Garden			Garden	Garden	Garden																															
+		Garden	Garden	Garden			Garden	Garden	Garden																															
+		Garden	Garden	Garden			Garden	Garden	Garden																															
+		Garden	Garden	Garden				FactionGuard																																
+		Garden	Garden	Garden				Hallway																																
+			Garden				Hallway	Hallway	Hallway																															
+			FactionGuard				Hallway		Hallway	Hallway																														
+			Hallway			Hallway	Hallway	Hallway		Hallway																														
+		Hallway	Hallway			Hallway		Hallway	Hallway	Hallway																														
+		Hallway			Hallway	Hallway											Hallway																							
+		Hallway	Hallway		Hallway												Hallway	Hallway	Hallway	Hallway																				
+			Hallway	Hallway	Hallway													FactionEnemy		Hallway																				
+FinnAaronRoom					Hallway											Hallway	Hallway	Hallway		Hallway																				
+					FactionEnemy	Hallway	Hallway							Hallway		Hallway				FactionGuard																				
+						Hallway	Hallway							Hallway		Hallway	Hallway		Lab	Lab	Lab																			
+						Hallway						Hallway	Hallway	Hallway	Hallway		Hallway		Lab	Lab	Lab																			
+					Hallway	Hallway	Hallway					Hallway			Hallway	Hallway	Hallway		Lab	Lab	Lab																			
+				Hallway	Hallway	Hallway	Hallway					Hallway	Hallway						Lab	ComputerLab	Lab																			
+				Hallway			Hallway						Hallway																											
+				Hallway	Hallway		Hallway						Hallway	Hallway																										
+				Hallway	Hallway	Hallway	Hallway							Hallway																										
+						Hallway								Hallway																										
+						FactionEnemy	Hallway							Hallway																										
+							Hallway	Hallway						Hallway					LabLoot																					
+						Hallway	Hallway	Hallway						Hallway					Lab	Lab																				
+						Hallway						Hallway	Hallway	Hallway				Lab	Lab	Lab	Lab																			
+						Hallway	Hallway					Hallway		Hallway					Lab	Lab																				
+							Hallway					Hallway		Hallway	StartingCloset				Lab	Lab																				
+							Hallway	Hallway		Hallway	Hallway	Hallway	Hallway	StartingRoom	Hallway	Hallway	Hallway		LabGuard																					
+								Hallway		Hallway				Hallway			Hallway		Hallway																					
+								Hallway	Hallway	Hallway				Hallway			Hallway		Hallway																					
+														Hallway			Hallway	Hallway	Hallway	Hallway																				
+														Hallway	Hallway				Hallway																					
+															Hallway				Hallway	Hallway										Tunnel	Tunnel	Tunnel	Tunnel							
+															Hallway					Hallway										Tunnel			Tunnel							
+															Hallway															Tunnel	Tunnel		Tunnel	Tunnel						
+													Hallway	Hallway	HallTunnel	TunnelEntrance	Tunnel	Tunnel													Tunnel			Tunnel						
+															Hallway			Tunnel	Tunnel	Tunnel										Tunnel	Tunnel			Tunnel						
+														Hallway	Hallway					Tunnel		Tunnel								Tunnel				Tunnel						
+						Hospital	Hospital	Hospital						Hallway						Tunnel	Tunnel	Tunnel					Tunnel	Tunnel	Tunnel	Tunnel			Tunnel	Tunnel						
+						Hospital	Hospital	Hospital						Hallway								Tunnel	Tunnel	Tunnel	Tunnel		Tunnel	Tunnel					Tunnel							
+					Hospital	Hospital		Hospital	Hospital	FactionGuard	Hallway			Hallway											Tunnel	Tunnel	Tunnel	Tunnel					Tunnel							
+					Hospital	Hospital	Hospital				Hallway	Hallway	Hallway	Hallway																			Tunnel		Tunnel					
+							HospitalLoot							Hallway																	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel				
+														Hallway																						Tunnel				
+														Hallway																				TunnelLoot	Tunnel	Tunnel				
+													Hallway	Hallway	Hallway																		Tunnel		Tunnel					
+												Hallway	Hallway		Hallway	Hallway															Tunnel	Tunnel	Tunnel	Tunnel	Tunnel					Tunnel
+											Hallway	Hallway				Hallway	Hallway											Tunnel				Tunnel								Tunnel
+											Hallway						Hallway											Tunnel		Tunnel	Tunnel	Tunnel	Tunnel							
+											Hallway	Hallway				Hallway	Hallway									Tunnel	Tunnel	Tunnel		Tunnel		Tunnel								
+												Hallway	Hallway		Hallway	Hallway										Tunnel	Tunnel	Tunnel				Tunnel		Tunnel		Tunnel				
+													Hallway		Hallway											Tunnel	Tunnel	Tunnel		Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	Tunnel	
+													FactionEnemy		FactionEnemy											Tunnel	Tunnel	Tunnel	Tunnel	Tunnel			Tunnel			Tunnel		Tunnel	Tunnel	Tunnel
+												Hallway	Hallway		Hallway	Hallway											Tunnel		CaveEntrance				Tunnel	Tunnel				Tunnel		
+												Hallway				Hallway													CaveEntrance					Tunnel	CaveEntrance		Tunnel	Tunnel	Tunnel	
+												Hallway	Hallway	FactionGuard	Hallway	Hallway												Cave	Cave	Cave					Cave		Tunnel			Tunnel
+														Hallway														Cave	Cave						Cave	Cave				Tunnel
+														ExitDoor															Cave							Cave			Tunnel	Tunnel
+														WinRoom												Cave	Cave	Cave	Cave		Cave	Cave	Cave		Cave	Cave			Tunnel	
+																									Cave	Cave		Cave		Cave	Cave		Cave		Cave	Cave				
+																											Cave	Cave	Cave	Cave			Cave	Cave	Cave					
+																												Cave		Cave										
+																												CaveLoot												

@@ -245,7 +245,7 @@ class ComputerLab(MobRoom):
 	
 class Lab(MapTile):
 	def __init__(self, x, y):
-		super().__init__(x, y)
+		super().__init__(self, x, y)
 
 	def intro_text(self):
 		return """\nThe floor crunches with broken glass under your feet. Strewn about are papers obscured and forgotten. This place was once bustling, but now there is nothing\n"""
@@ -253,7 +253,7 @@ class Lab(MapTile):
 
 class LabLoot1(GrabLootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, items.Scalpel())
+		super().__init__(self, x, y, items.Scalpel())
 
 	def intro_text(self):
 		if len(self.item) != 0:
@@ -279,7 +279,7 @@ class LabLoot1(GrabLootRoom):
 
 class LabLoot2(GrabLootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, items.HexDriver())
+		super().__init__(self, x, y, items.HexDriver())
 
 	def intro_text(self):
 		if len(self.item) != 0:
@@ -304,7 +304,7 @@ class LabLoot2(GrabLootRoom):
 
 class TunnelLoot(GrabLootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, items.BrassKnuckles())
+		super().__init__(self, x, y, items.BrassKnuckles())
 
 	def intro_text(self):
 		if len(self.item) != 0:
@@ -330,7 +330,7 @@ class TunnelLoot(GrabLootRoom):
 class FinnAaronRoom(GrabLootRoom):
 	#dev only room
 	def __init__(self, x, y):
-		super().__init__(x, y, items.HexDriver())
+		super().__init__(self, x, y, items.HexDriver())
 
 	def intro_text(self):
 		return """\nEat pant\n"""
@@ -351,7 +351,7 @@ class FinnAaronRoom(GrabLootRoom):
 
 class CaveEntrance(MapTile):
 	def __init__(self, x, y):
-		super().__init__(x, y)
+		super().__init__(self, x, y)
 
 	def intro_text(self):
 		return """\nYou find yourself at the mouth of a cave\n"""
@@ -361,7 +361,7 @@ class CaveEntrance(MapTile):
 
 class Cave(MapTile):
 	def __init__(self, x, y):
-		super().__init__(x, y)
+		super().__init_(self, x, y)
 
 	def intro_text(self):
 		return """\nThe walls of the cave drip and no end can be seen in the darkness\n"""
@@ -373,7 +373,7 @@ class Cave(MapTile):
 class ExitDoor(MapTile):
 	def __init__(self, x, y):
 		self.locked = True
-		super().__init__(x, y)
+		super().__init__(self, x, y)
 
 	def intro_text(self):
 		return """\nThe door lays open with a small elevator waiting patiantly\n"""
@@ -383,7 +383,7 @@ class ExitDoor(MapTile):
 
 class Garden(MapTile):
 	def __init__(self, x, y):
-		super().__init__(x, y)
+		super().__init__(self, x, y)
 
 	def intro_text(self):
 		return """\nFertile dirt lies around you, light water sprinkles from pipes above. Nothing to eat in here however\n"""
@@ -393,7 +393,7 @@ class Garden(MapTile):
 
 class Hospital(MapTile):
 	def __init__(self, x, y):
-		super().__init__(x, y)
+		super().__init__(self, x, y):
 
 	def intro_text(self):
 		return """\nYou seem to have found yourself in a place of medicine. There might be something here to help heal you\n"""
@@ -401,109 +401,12 @@ class Hospital(MapTile):
 	def modify_player(self, the_player):
 		pass
 
-
 class HospitalLoot(GrabLootRoom):
 	def __init__(self, x, y):
-		super().__init__(x, y, items.HealthPack())
+		super().__init__(self, x, y, items.HealthPack())
 
 	def intro_text(self):
-		return """\nA small box with a red cross sit on the table, bearing the inscription "First Aid Kit" There is not much else here\n"""
+		return """\nA small kit lies on the table, marked with a red cross. The rest of the room seems barren\n"""
 
 	def available_actions(self, the_player):
-		moves = self.adjacent_moves()
-		moves.append(actions.ViewInventory())
-		moves.append(actions.Use(tile=self))
-		moves.append(actions.Quit())
-
-		if len(self.item) != 0:
-			moves.append(actions.Grab(tile=self))
-
-		if the_player.fsm:
-			moves.extend(self.devcommands(the_player))
-
-		return moves
-
-class CaveLoot(GrabLootRoom):
-	def __init__(self, x, y):
-		super().__init__(x, y, items.Diamond(), items.Pickaxe())
-
-	def intro_text(self, x, y):
-		return """\nA small glittering object sits in the corner, next to a hefty pickaxe\n"""
-
-	def available_actions(self, the_player):
-		moves = self.adjacent_moves()
-		moves.append(actions.ViewInventory())
-		moves.append(actions.Use(tile=self))
-		moves.append(actions.Quit())
-
-		if len(self.item) != 0:
-			moves.append(actions.Grab(tile=self))
-
-		if the_player.fsm:
-			moves.extend(self.devcommands(the_player))
-
-		return moves
-
-class GardenLoot(GrabLootRoom):
-	def __init__(self, x, y):
-		super().__init__(x, y, items.Carrot(), items.Potato())
-
-	def intro_text(self, x, y):
-		return """\nA carrot and potato lie forgotten on a bench next to gardening equipment\n"""
-
-	def available_actions(self, the_player):
-		moves = self.adjacent_moves()
-		moves.append(actions.ViewInventory())
-		moves.append(actions.Use(tile=self))
-		moves.append(actions.Quit())
-
-		if len(self.item) != 0:
-			moves.append(actions.Grab(tile=self))
-
-		if the_player.fsm:
-			moves.extend(self.devcommands(the_player))
-
-		return moves
-
-
-class FactionGuard(MobRoom):
-        def __init__(self, x, y):
-                super().__init__(x, y, enemies.FactionGuardMob())
-
-        def intro_text(self):
-                if self.enemy.is_alive():
-                        return """\nA guard bars the way\n"""
-                else:
-                        return """\nA guard lies on the ground, his blood splattered on the floor\n"""
-
-
-class FactionEnemy(MobRoom):
-        def __init__(self, x, y):
-                super().__init__(x, y, enemies.FactionEnemyMob())
-
-        def intro_text(self):
-                if self.enemy.is_alive():
-                        return """\nA large guard  bars the way\n"""
-                else:
-                        return """\nA large guard lies on the ground, his blood splattered on the floor\n"""
-
-class LabLoot(GrabLootRoom):
-	def __init__(self, x, y):
-		super().__init__(x, y, items.HexDriver())
-
-	def intro_text(self):
-		return """\nThere is a small screwdriver sitting on a bench\n"""
-
-	def available_moves(self, the_player):
-		moves = self.adjacent_moves()
-		moves.append(actions.ViewInventory())
-		moves.append(actions.Use(tile=self))
-		moves.append(actions.Quit())
-
-		if len(self.item) != 0:
-			moves.append(actions.Grab(tile=self))
-
-		if the_player.fsm:
-			moves.extend(self.devcommands(the_player))
-
-		return moves
+		

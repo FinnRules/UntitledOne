@@ -37,3 +37,45 @@ class Attack(Action):
 class Flee(Action):
 	def __init__(self, tile):
 		super().__init__(method=Player.flee, name='Flee', hotkey='f', tile=tile)
+
+class Grab(Action):
+	def __init__(self, tile):
+		super().__init__(method=Player.grab, name='Grab', hotkey='g', tile=tile)
+
+class Use(Action):
+	def __init__(self, tile):
+		super().__init__(method=Player.use, name='Use', hotkey='u', tile=tile)
+
+class Talk(Action):
+	def __init__(self, tile, enemy):
+		super().__init__(method=Player.talk, name='Talk', hotkey='t', tile=tile, enemy=enemy)
+
+class Quit(Action):
+	def __init__(self):
+		super().__init__(method=Player.quit, name='Quit', hotkey='q')
+#dev command
+class MapInfo(Action):
+	def __init__(self, tile):
+		super().__init__(method=Player.mapinfo, name= 'Map Info', hotkey='mi', tile=tile)
+#dev command
+class Teleport(Action):
+	def __init__(self):
+		super().__init__(method=Player.teleport, name='Teleport', hotkey='tp')
+#dev command
+class Invin(Action):
+	def __init__(self):
+		super().__init__(method=Player.invin, name='Toggle Invincibility', hotkey='nv')
+#dev command
+class SetHp(Action):
+	def __init__(self):
+		super().__init__(method=Player.sethp, name='Set HP', hotkey='hp')
+
+#dev command
+class NpcHp(Action):
+	def __init__(self, tile):
+		super().__init__(method=Player.npchp, name='Set NPC HP', hotkey='np', tile=tile)
+
+#dev command
+class Settings(Action):
+	def __init__(self):
+		super().__init__(method=Player.settings, name='Settings', hotkey='st')

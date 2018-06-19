@@ -1,0 +1,6 @@
+#this one is easy
+
+#normal enemy
+class <Name>(Enemy):
+  def __init__(self):
+    super().__init__(name=<name>, hp=<hp>, damage=<damage>) #name is a string, hp and damage are ints

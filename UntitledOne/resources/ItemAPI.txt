@@ -1,0 +1,6 @@
+#this is subject to engine changes
+
+#weapon
+class <Name>(Weapon):
+  def __init__(self):
+    super().__init__(name=<Name>, description=<Name>, value=<value>, damage=<Damage>) #name and desc are stirngs, value and dmg are ints

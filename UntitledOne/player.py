@@ -3,7 +3,7 @@ import items, world
 
 class Player():
 	def __init__(self):
-		self.inventory = [items.Shovel()] #creates array to store inv with starting items
+		self.inventory = [items.Shovel(), items.HexDriver()] #creates array to store inv with starting items
 		self.hp = 50
 		self.location_x, self.location_y = world.starting_position
 		self.victory = False
@@ -105,10 +105,22 @@ class Player():
 						print("\n{} used, adding {} health\n".format(self.inventory[i].name, self.inventory[i].heal))
 						del self.inventory[i]
 						return
-#					elif isinstance(self.inventory[i].name, Key):
-#						if (self.location_x = self.inventory[i].name.unlockx - 1 or self.location_x = self.inventory[i].name.unlockx + 1) and (self.location_y = self.inventory[i].name.unlocky - 1 or self.location_y = self.inventory[i].name.unlocky + 1):
-						#world.tile_exists(self.inventory[i].name.unlockx, self.inventory[i].name.unlocky)
-#							world.unlock(self.inventory[i].name.unlockx, self.inventory[i].name.unlocky, False)
+					elif isinstance(self.inventory[i], items.Key):
+						print(world.tile_exists(self.location_x + 1, self.location_y).key)
+						print(world.is_locked(0, 0))
+						if world.is_locked(self.location_x + 1, self.location_y): #checks to see if the tile exists and if it's locked
+							if world.tile_exists(self.location_x + 1, self.location_y).key.lower() == self.inventory[i].name.lower(): #checks to see if key name is equal to item used
+								world.unlock(self.location_x + 1, self.location_y, False) #unlocks
+						if world.is_locked(self.location_x - 1, self.location_y):
+							if world.tile_exists(self.location_x - 1, self.location_y).key.lower() == self.inventory[i].name.lower():
+								world.unlock(self.locaiton_x - 1, self.location_y, False)
+						if world.is_locked(self.location_x, self.location_y + 1):
+							if world.tile_exists(self.location_x, self.location_y + 1).key.lower() == self.inventory[i].name.lower():
+								world.unlock(self.location_x, self.location_y + 1, False)
+						if world.is_locked(self.location_x, self.location_y - 1):
+							if world.tile_exists(self.location_x, self.location_y - 1).key.lower() == self.inventory[i].name.lower():
+								world.unlock(self.location_x, self.location_y - 1, False)
+
 					else:
 						self.inventory[i].use_item()
 						return
@@ -143,10 +155,12 @@ class Player():
 			print("Dmg: {}\nHP: {}\nAggro: {}\n".format(tile.enemy.damage, tile.enemy.hp, tile.enemy.aggro))
 
 	def teleport(self):
+		print("Teleport to (absolute coords):")
 		movetox = int(input('x: '))
 		movetoy = int(input('y: '))
 		if world.tile_exists(movetox, movetoy):
 			self.move(dx=(movetox - self.location_x), dy=(movetoy - self.location_y))
+			self.mapinfo(world.tile_exists(movetox, movetoy))
 		else:
 			print("\ntp: Tile does not exist\n")
 

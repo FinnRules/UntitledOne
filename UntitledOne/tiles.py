@@ -5,6 +5,7 @@ class MapTile:
 		self.x = x
 		self.y = y
 		self.locked = False
+		self.key = None
 
 	def intro_text(self):
 		raise NotImplementedError()
@@ -199,8 +200,10 @@ class TunnelSociety(MobRoom):
 
 class TunnelEntrance(MapTile):
 	def __init__(self, x, y):
-		self.locked = True
+#		self.locked = True
 		super().__init__(x, y)
+		self.locked = True
+		self.key = "screwdriver"
 
 	def intro_text(self):
 		return """\nLight seeps in from the vent, revealing a cramped tunnel twisting around the corner into darkness\n"""
@@ -212,7 +215,7 @@ class HallTunnel(MapTile):
 	def __init__(self, x, y):
 		super().__init__(x, y)
 
-	def intro_text(self, x, y):
+	def intro_text(self):
 		if world.is_locked(self.x + 1, self.y):
 			return """\nThe hallway stretches onward, passing a small vent glowing with light. The vent appears to be secured with hex screws\n"""
 		else:

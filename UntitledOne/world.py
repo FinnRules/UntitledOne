@@ -18,8 +18,11 @@ def load_tiles():
 			_world[(x, y)] = None if tile_name == '' else getattr(__import__("tiles"), tile_name)(x, y)
 
 
-def is_locked(x, y): #function to check if a room is locked, used by available_actions
-	return _world.get((x, y)).locked
+def is_locked(x, y): #function to check if a room is locked, used by available_actions (True = locked)
+	if _world.get((x, y)):
+		return _world.get((x, y)).locked
+	else:
+		return False
 
 def unlock(x, y, state): #open or close rooms (enemies.py: x, y will be absolute coords) state can only be boolean True or False or it will throw an error
 	_world.get((x, y)).locked = state #room coords start at (0, 0)
